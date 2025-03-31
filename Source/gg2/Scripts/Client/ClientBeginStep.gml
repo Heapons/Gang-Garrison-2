@@ -23,12 +23,14 @@ if (global.isPlayingReplay and global.myself == -1){
     }
 if (global.isPlayingReplay){
     var length;
-    for(a=0; a<global.replaySpeed; a+=1){
+    var framesToPlay;
+    framesToPlay = global.replayTime + global.replaySpeed;
+    for(a=0; a<framesToPlay ; a+=1){
         length = read_ushort(global.replayBuffer);
         for(i = 0; i < length; i += 1){
             write_ubyte(global.replaySocket, read_ubyte(global.replayBuffer));
         }
-        global.replayTime += 1;
+        global.replayTime += global.replaySpeed;
     }
     socket_send(global.replaySocket);
 }
