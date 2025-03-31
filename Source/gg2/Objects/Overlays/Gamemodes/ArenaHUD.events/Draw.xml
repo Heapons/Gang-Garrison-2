@@ -49,11 +49,13 @@ if (global.myself != -1)
     
     //Alive players remaining 
     draw_set_alpha(global.dsmHudOpacityReal)
-    draw_set_color(c_black);
+    <!-- TODO check if this should be white or black -->
+    draw_set_color(c_white);
+    <!-- draw_set_color(c_black); -->
     draw_sprite_ext(ArenaPlayerCountS, 0, xoffset+xsize/2, yoffset+71, 2, 2, 0, c_white, global.dsmHudOpacityReal);
-    draw_text(xoffset+xsize/2+15, yoffset+73, redteamCharacters);
+    draw_text(xoffset+xsize/2-22, yoffset+73, redteamCharacters);
     draw_sprite_ext(ArenaPlayerCountS, 1, xoffset+xsize/2, yoffset+104, 2, 2, 0, c_white, global.dsmHudOpacityReal);
-    draw_text(xoffset+xsize/2+15, yoffset+106, blueteamCharacters);
+    draw_text(xoffset+xsize/2+22, yoffset+106, blueteamCharacters);
 }
  
 //MVPs
