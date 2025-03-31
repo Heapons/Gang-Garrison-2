@@ -172,7 +172,7 @@ for(i = 1; i <= numberOfMaps; i += 1)
         pluginList = getpluginhashes(global.serverPluginList);
         if (pluginList == 'failure')
         {
-            show_message("Error ocurred getting server-sent plugin hashes.");
+            show_message("Error occurred getting server-sent plugin hashes.");
             game_end();
             exit;
         }
@@ -200,7 +200,7 @@ for(i = 1; i <= numberOfMaps; i += 1)
         
         if (!loadserverplugins(pluginList))
         {
-            show_message("Error ocurred loading server-sent plugins.");
+            show_message("Error occurred loading server-sent plugins.");
             game_end();
             exit;
         }

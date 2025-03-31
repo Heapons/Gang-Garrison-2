@@ -163,7 +163,22 @@ with(BladeB){
     firststep = false;
 }
 
-with(BurningProjectile){
+if(global.particles == PARTICLES_ALTERNATIVE)
+{
+    if(not variable_global_exists("flameParticleType"))
+    {
+        global.flameParticleType = part_type_create();
+        part_type_sprite(global.flameParticleType, FlameS, true, false, true);
+        part_type_alpha2(global.flameParticleType, 1, 0.3);
+    }
+    if(not variable_global_exists("flameParticleSystem"))
+    {
+        global.flameParticleSystem = part_system_create();
+        part_system_depth(global.flameParticleSystem, 10);
+    }
+    part_type_life(global.flameParticleType, 4/global.delta_factor, 7/global.delta_factor);
+}
+with(BurningProjectile) {
     if(!variable_local_exists("firststep"))
         firststep = true;
     
@@ -188,19 +203,6 @@ with(BurningProjectile){
     }
     else if(global.particles == PARTICLES_ALTERNATIVE and global.run_virtual_ticks)
     {
-        if(not variable_global_exists("flameParticleType"))
-        {
-            global.flameParticleType = part_type_create();
-            part_type_sprite(global.flameParticleType, FlameS, true, false, true);
-            part_type_alpha2(global.flameParticleType, 1, 0.3);
-            part_type_life(global.flameParticleType, 4, 7);
-        }
-        
-        if(not variable_global_exists("flameParticleSystem"))
-        {
-            global.flameParticleSystem = part_system_create();
-            part_system_depth(global.flameParticleSystem, 10);
-        }
         if(random(8) < 1)
             part_particles_create(global.flameParticleSystem,x,y,global.flameParticleType,1);
     }
